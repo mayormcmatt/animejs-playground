@@ -1,0 +1,63 @@
+// Web font
+@import url(https://fonts.googleapis.com/css?family=VT323);
+
+%vt {
+	font-family: 'VT323', monospace;
+}
+
+//Device widths
+$phone-width: 320px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+$desktop-content-max-width: 1180px;
+
+// Colors
+$gold: rgba(239, 183, 48, 1);
+$crimson: rgba(230, 57, 70, 1);
+$moss: rgba(102, 161, 130, 1);
+$slate: rgba(57, 62, 65, 1);
+$whitish: rgba(241, 250, 238, 1);
+
+@mixin phone {
+	@media (min-width: #{$phone-width}) and (max-width: #{$tablet-width - 1px}) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+		@content;
+	}
+}
+
+// This fixes one specific issue while approaching desktop width
+@mixin tablet-lg {
+	@media (min-width: #{$desktop-width}) and (max-width: #{$desktop-content-max-width}) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media (min-width: #{$desktop-width}) {
+		@content;
+	}
+}
+
+%box {
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	border: $slate 2px solid;
+	border-radius: 3px;
+	@extend %glow;
+}
+
+/* in order: x offset, y offset, blur size, spread size, color */
+%glow {
+	box-shadow: 0px 0px 15px 5px $whitish;
+}
+
+%v-center-content {
+	display: flex;
+	align-items: center;
+}

@@ -1,0 +1,47 @@
+body {background: $whitish;}
+
+.main-container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.demo-content {
+		width: 1200px;
+		height: 250px;
+		position: relative;
+		background: $slate;
+		border-radius: 10px;
+		margin: 10px 0;
+
+		.demo-content__text {
+			position: absolute;
+			margin: 0;
+			top: 10px;
+			left: 10px;
+			color: $whitish;
+			font-size: 2em;
+			@extend %vt;
+		}
+
+		.box {
+			&--green {
+				@extend %box;
+				background-color: $moss;
+				left: 200px;
+			}
+
+			&--red {
+				@extend %box;
+				background-color: $crimson;
+				left: 200px;
+			}
+
+			&--blue {
+				@extend %box;
+				background-color: blue;
+				left: 200px;
+			}
+		}
+	}
+}
