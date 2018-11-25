@@ -1,4 +1,4 @@
-var runReverse = (element, animation) => {
+const runReverse = (element, animation) => {
 	document.querySelector(element)
 		.addEventListener('click', () => {
 			// console.log('clicked')
@@ -11,7 +11,7 @@ var runReverse = (element, animation) => {
 }
 
 // Animations
-var rowOne = anime({
+const rowOne = anime({
 	targets: '.row-one .box--red',
 	translateX: 800,
 	scale: 2,
@@ -22,15 +22,18 @@ var rowOne = anime({
 	autoplay: false
 });
 
-var rowTwo = anime({
+const rowTwo = anime({
 	targets: '.row-two .box--green',
 	translateX: {
-		value: 500,
-		duration: 800
+		value: 800,
+		duration: 2000,
+		elasticity: 100
 	},
 	translateY: {
-		value: 70,
-		duration: 1000
+		value: 65,
+		duration: 800,
+		delay: 200,
+		elasticity: 100
 	},
 	rotate: {
 		value: 720,
@@ -47,5 +50,32 @@ var rowTwo = anime({
 	autoplay: false
 });
 
+var rowThree = anime.timeline({
+	autoplay: false
+});
+
+rowThree
+	.add({
+		targets: '.row-three .box--gold',
+		translateX: 800,
+		rotate: 180,
+		elasticity: 200
+	})
+	.add({
+		targets: '.row-three .box--gold',
+		translateX: 800,
+		scale: 3,
+		borderRadius: '50%',
+		duration: 3000
+	})
+	.add({
+		targets: '.row-three .box--gold',
+		translateX: 0,
+		scale: 1,
+		borderRadius: '2px'
+	})
+
+// Run animations
 runReverse('.row-one .box--red', rowOne);
 runReverse('.row-two .box--green', rowTwo);
+runReverse('.row-three .box--gold', rowThree);

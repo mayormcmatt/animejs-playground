@@ -1,10 +1,18 @@
-body {background: $whitish;}
+body {
+	background: $whitish;
+}
 
 .main-container {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+
+	.row-one,
+	.row-two,
+	.row-three {
+		@extend %v-center-content;
+	}
 
 	.demo-content {
 		width: 1200px;
@@ -37,9 +45,9 @@ body {background: $whitish;}
 				left: 200px;
 			}
 
-			&--blue {
+			&--gold {
 				@extend %box;
-				background-color: blue;
+				background-color: $gold;
 				left: 200px;
 			}
 		}
